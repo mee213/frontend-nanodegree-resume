@@ -11,7 +11,7 @@ var work = {
     {
       "employer": "Test Company",
       "title": "Test Title",
-      "location": "Houston, TX",
+      "location": "New York, NY",
       "dates": "2004-2009",
       "description": "Description of my Test job goes here"
     }
@@ -65,7 +65,7 @@ var education = {
       "location": "Houston, TX",
       "degree": "BA",
       "majors": ["Spanish"],
-      "dates": 2002-2006,
+      "dates": 2006,
       "url": "http://www.uh.edu"
     }
   ],
@@ -73,13 +73,13 @@ var education = {
     {
       "title": "Software as a Service",
       "school": "edX / Berkeley X",
-      "dates": 2013,
+      "date": 2013,
       "url": "edX SaaS URL goes here"
     },
     {
       "title": "Startup Engineering",
       "school": "Coursera / Stanford",
-      "dates": 2013,
+      "date": 2013,
       "url": "Coursera URL goes here"
     }
 //    {
