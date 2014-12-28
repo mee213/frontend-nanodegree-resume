@@ -1,4 +1,60 @@
 
+var bio = {
+  "name": "Marlo Evans",
+  "role": "Web Developer",
+  "contacts": {
+    "mobile": "832-964-4661",
+    "email": "evans.marlo@gmail.com",
+    "github": "mee213",
+    "twitter": "@marloevans",
+    "location": "Houston, TX"
+  },
+  "welcomeMessage": "This is a welcome message.",
+  "skills": [
+    "skill 1", "skill 2", "skill 3", "skill 4"
+  ],
+  "bioPic": "images/fry.jpg"
+};
+
+var education = {
+  "schools": [
+    {
+      "name": "University of Houston",
+      "location": "Houston, TX",
+      "degree": "BA",
+      "majors": ["Spanish"],
+      "dates": 2006,
+      "url": "http://www.uh.edu"
+    }
+  ],
+  "onlineCourses": [
+    {
+      "title": "Software as a Service",
+      "school": "edX / Berkeley X",
+      "dates": 2013,
+      "url": "edX SaaS URL goes here"
+    },
+    {
+      "title": "Startup Engineering",
+      "school": "Coursera / Stanford",
+      "dates": 2013,
+      "url": "Coursera URL goes here"
+    }
+//    {
+//      Code School courses go here
+//    },
+//    {
+//      Codecademy courses go here
+//    },
+//    {
+//      Bloc -- Design goes here
+//    },
+//    {
+//      Udacity -- Front-End Nanodegree goes here
+//    },
+  ]
+};
+
 var work = {
   "jobs": [
     {
@@ -41,84 +97,13 @@ var projects = {
   ]
 };
 
-var bio = {
-  "name": "Marlo Evans",
-  "role": "Web Developer",
-  "contacts": {
-    "mobile": "832-964-4661",
-    "email": "evans.marlo@gmail.com",
-    "github": "mee213",
-    "twitter": "@marloevans",
-    "location": "Houston, TX"
-  },
-  "welcomeMessage": "This is a welcome message.",
-  "skills": [
-    "skill 1", "skill 2", "skill 3", "skill 4"
-  ],
-  "bioPic": "images/fry.jpg"
-};
-
-var education = {
-  "schools": [
-    {
-      "name": "University of Houston",
-      "location": "Houston, TX",
-      "degree": "BA",
-      "majors": ["Spanish"],
-      "dates": 2006,
-      "url": "http://www.uh.edu"
-    }
-  ],
-  "onlineCourses": [
-    {
-      "title": "Software as a Service",
-      "school": "edX / Berkeley X",
-      "date": 2013,
-      "url": "edX SaaS URL goes here"
-    },
-    {
-      "title": "Startup Engineering",
-      "school": "Coursera / Stanford",
-      "date": 2013,
-      "url": "Coursera URL goes here"
-    }
-//    {
-//      Code School courses go here
-//    },
-//    {
-//      Codecademy courses go here
-//    },
-//    {
-//      Bloc -- Design goes here
-//    },
-//    {
-//      Udacity -- Front-End Nanodegree goes here
-//    },
-  ]
-};
-
-var displayNameAndRole = function() {
+bio.display = function() {
 
   var formattedName = HTMLheaderName.replace("%data%",bio.name);
-
   var formattedRole = HTMLheaderRole.replace("%data%",bio.role);
 
   $("#header").prepend(formattedRole);
-
   $("#header").prepend(formattedName);
-};
-
-//$("#main").append(bio.contact);
-
-//$("#main").append(bio.image);
-
-//$("#main").append(bio.skills);
-
-//$("#main").append(work["position"]);
-
-//$("#main").append(education.name);
-
-var displayContacts = function() {
 
   var formattedContact = HTMLmobile.replace("%data%", bio.contacts["mobile"]);
   $("#topContacts").append(formattedContact);
@@ -134,19 +119,13 @@ var displayContacts = function() {
 
   formattedContact = HTMLlocation.replace("%data%", bio.contacts["location"]);
   $("#topContacts").append(formattedContact);
-};
 
-var displayBioPic = function() {
   var formattedBioPic = HTMLbioPic.replace("%data%", bio.bioPic);
   $("#header").append(formattedBioPic);
-};
 
-var displayWelcomeMessage = function() {
   var formattedWelcomeMsg = HTMLWelcomeMsg.replace("%data%", bio.welcomeMessage);
   $("#header").append(formattedWelcomeMsg);
-};
 
-var displaySkills = function() {
   if (bio.skills.length > 0) {
     $("#header").append(HTMLskillsStart);
 
@@ -162,9 +141,40 @@ var displaySkills = function() {
     formattedSkill = HTMLskills.replace("%data%", bio.skills[3]);
     $("#skills").append(formattedSkill);
   }
-};
+}
+//var displayNameAndRole = function() {
 
-var displayWork = function() {
+
+//};
+
+//$("#main").append(bio.contact);
+
+//$("#main").append(bio.image);
+
+//$("#main").append(bio.skills);
+
+//$("#main").append(work["position"]);
+
+//$("#main").append(education.name);
+
+//var displayContacts = function() {
+
+
+//};
+
+//var displayBioPic = function() {
+
+//};
+
+//var displayWelcomeMessage = function() {
+
+//};
+
+//var displaySkills = function() {
+
+//};
+
+work.display = function() {
   for (job in work.jobs) {
   $("#workExperience").append(HTMLworkStart);
 
@@ -188,16 +198,6 @@ var displayWork = function() {
   }
 };
 
-var inName = function(oldName) {
-    var finalName = oldName;
-    var arrayOfStrings = finalName.split(" ");
-    arrayOfStrings[0] = arrayOfStrings[0].toLowerCase();
-    arrayOfStrings[0] = arrayOfStrings[0].replace(arrayOfStrings[0].charAt(0),arrayOfStrings[0].charAt(0).toUpperCase());
-    arrayOfStrings[1] = arrayOfStrings[1].toUpperCase();
-    var finalName = arrayOfStrings.join(' ');
-    return finalName;
-};
-
 projects.display = function() {
   for (project in projects.projects) {
     $("#projects").append(HTMLprojectStart);
@@ -218,13 +218,79 @@ projects.display = function() {
   }
 };
 
-displayNameAndRole();
-displayContacts();
-displayBioPic();
-displayWelcomeMessage();
-displaySkills();
-displayWork();
+education.display = function() {
+  for (school in education.schools) {
+    $("#education").append(HTMLschoolStart);
+
+    var formattedSchoolName = HTMLschoolName.replace("%data%", education.schools[school].name);
+    var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
+    var formattedSchoolNameDegree = formattedSchoolName + formattedSchoolDegree;
+    $(".education-entry:last").append(formattedSchoolNameDegree);
+
+    var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
+    $(".education-entry:last").append(formattedSchoolDates);
+
+    var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
+    $(".education-entry:last").append(formattedSchoolLocation);
+
+    for (major in education.schools[school].majors) {
+      var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", education.schools[school].majors[major]);
+      $(".education-entry:last").append(formattedSchoolMajor);
+    }
+  }
+
+  if (education.onlineCourses.length > 0) {
+    $("#education").append(HTMLonlineClasses);
+
+    for (onlineCourse in education.onlineCourses) {
+      $("#education").append(HTMLschoolStart);
+
+      var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[onlineCourse].title);
+      var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[onlineCourse].school);
+      var formattedOnlineTitleSchool = formattedOnlineTitle + formattedOnlineSchool;
+      $(".education-entry:last").append(formattedOnlineTitleSchool);
+
+      var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[onlineCourse].dates);
+      $(".education-entry:last").append(formattedOnlineDates);
+
+      var formattedOnlineURL = HTMLonlineURL.replace("%data%", education.onlineCourses[onlineCourse].url);
+      $(".education-entry:last").append(formattedOnlineURL);
+    }
+  }
+};
+
+bio.displayFooterContacts = function() {
+  var formattedContact = HTMLmobile.replace("%data%", bio.contacts["mobile"]);
+  $("#footerContacts").append(formattedContact);
+
+  formattedContact = HTMLemail.replace("%data%", bio.contacts["email"]);
+  $("#footerContacts").append(formattedContact);
+
+  formattedContact = HTMLgithub.replace("%data%", bio.contacts["github"]);
+  $("#footerContacts").append(formattedContact);
+
+  formattedContact = HTMLtwitter.replace("%data%", bio.contacts["twitter"]);
+  $("#footerContacts").append(formattedContact);
+
+  formattedContact = HTMLlocation.replace("%data%", bio.contacts["location"]);
+  $("#footerContacts").append(formattedContact);
+}
+
+var inName = function(oldName) {
+    var finalName = oldName;
+    var arrayOfStrings = finalName.split(" ");
+    arrayOfStrings[0] = arrayOfStrings[0].toLowerCase();
+    arrayOfStrings[0] = arrayOfStrings[0].replace(arrayOfStrings[0].charAt(0),arrayOfStrings[0].charAt(0).toUpperCase());
+    arrayOfStrings[1] = arrayOfStrings[1].toUpperCase();
+    var finalName = arrayOfStrings.join(' ');
+    return finalName;
+};
+
+bio.display();
+work.display();
 projects.display();
+education.display();
+bio.displayFooterContacts();
 
 $("#main").append(internationalizeButton);
 
